@@ -1,0 +1,26 @@
+{
+  "name": "sunhacks--reporover",
+  "version": "1.0.0",
+  "description": "This is a project under SunHacks - A major hackathon @ ASU, Tempe, AZ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trancongthinh6304/sunhacks--repoRover.git"
+  },
+  "author": "Thinh Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trancongthinh6304/sunhacks--repoRover/issues"
+  },
+  "homepage": "https://github.com/trancongthinh6304/sunhacks--repoRover#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "nodemon": "^3.0.1"
+  }
+}
