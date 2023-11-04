@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+    </head>
+
+    <body>
+        <h1>Home</h1>
+        <form action="/api/get_data" method="post">
+            <label>URL:</label>
+            <input type="text" name="url" placeholder="URL" />
+            <input type="submit" />
+            {{#if error}}
+            <div class="alert alert-danger" role="alert" style="color:red">
+                {{error}}
+            </div>
+            {{/if}}
+        </form>
+
+    </body>
+
+</html>
