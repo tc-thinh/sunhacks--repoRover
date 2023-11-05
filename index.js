@@ -15,18 +15,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookierParser());
 app.use(express.json());
 
+cookieHistory = [];
+
 app.get("/", (req, res) => {
     let error = req.query.error;
     res.render("home", { layout: false, error: error });
 });
 
-app.post("/get_data", async (req, res) => {
-    const link = req.body.link;
-    console.log(link);
-    const response = await axios.post("http://127.0.0.1:8000/process_data", {
-        link: link,
+app.get("/view_data", async (req, res) => {
+    const itemsList = req.cookies.itemsList;
+    // console.log(itemsList);
+    res.render("action", {
+        data: itemsList,
+        repo_name: req.cookies.repo_name,
     });
-    res.send(response.data);
 });
 
 // Handle POST request to checking URL
@@ -41,17 +43,46 @@ app.post("/api/get_data", async (req, res) => {
                 link: url,
             }
         );
+        // console.log(response.data);
         const data = response.data.data.data;
+        const repo_name = response.data.repo_name;
         let itemsList = data.map((data) => ({
             name: data.name,
             description: data.description,
+            type: data.type,
+            url: data.url,
         }));
-        res.render("action", {
-            data: itemsList,
-        });
+        // console.log(itemsList);
+        res.cookie("itemsList", itemsList);
+        res.cookie("repo_name", repo_name);
+        res.redirect("/view_data");
     } else {
         res.redirect("/?error=Invalid URL");
     }
+});
+
+app.post("/api/get_sub_data", async (req, res) => {
+    let url = req.body.url;
+    // console.log(url);
+    const response = await axios.post(
+        "http://127.0.0.1:8000/process_sub_data",
+        {
+            link: url,
+        }
+    );
+    // console.log(response.data.data.data);
+    const data = response.data.data.data;
+    const repo_name = response.data.repo_name.split("?")[0];
+    let itemsList = data.map((data) => ({
+        name: data.name,
+        description: data.description,
+        type: data.type,
+        url: data.url,
+    }));
+    // console.log(itemsList);
+    res.cookie("itemsList", itemsList);
+    res.cookie("repo_name", repo_name);
+    res.redirect("/view_data");
 });
 
 app.listen(port, () => {

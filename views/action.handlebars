@@ -14,7 +14,7 @@
                     <div id="background-back" class="background"></div>
                     <div id="background-front" class="background">
                         <div id="large-toolbar" class="app-toolbar tall">
-                            <div id="large-title" class="large-title">Project ABC</div>
+                            <div id="large-title" class="large-title" style="font-weight: bold;">{{repo_name}}</div>
                         </div>
                     </div>
                 </div>
@@ -23,19 +23,16 @@
             </header>
         </main>
 
-        <div class="action__list__display">
+        <div class="action__list-display">
             <ol class="action__list" style="--length: {{data.length}}" role="list">
                 {{#each data}}
-                <li style="--i: {{@index}}">
+                <li style="--i: {{@index}}" class="action__list-item" item-type="{{this.type}}" item-url="{{this.url}}">
                     <h4>{{this.name}}</h4>
                     <p>{{this.description}}</p>
                 </li>
                 {{/each}}
             </ol>
         </div>
-
-
-
     </body>
 
 </html>
