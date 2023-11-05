@@ -31,6 +31,7 @@ We faced the challenge of navigating GitHub's complex folders while keeping the 
 - `cd ./path/to/sunhacks-repoRover`
 - `pip install requirements.txt`
 - `npm i`
+
 *Run simultaneously*
 - `npm start`
 - `python ./backend/run.py`
