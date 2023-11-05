@@ -5,7 +5,7 @@
     list-style-type: none!important;
 }
 
-.action__list__display{
+.action__list-display{
     margin: 0;
     height: auto;
     display: flex;

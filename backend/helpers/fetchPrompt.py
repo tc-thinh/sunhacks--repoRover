@@ -15,7 +15,7 @@ def fetchInferenceResult(input):
         "modelId": "cohere.command-text-v14",
         "contentType": "application/json",
         "accept": "*/*",
-        "body": "{\"prompt\":\"Act as a bot. Explain this github repository by a key-pair ({'name': ..., 'description'}) value. You just need to explain the potential content in each folder. Return your answer in JSON format without any further explanation. Provide your answer between '```json' and '```'.\\n\\n"
+        "body": "{\"prompt\":\"Act as a bot. Explain this github repository by a key-pair ({'name': ..., 'description': ..., 'type':.., 'url': ...}) value. You just need to explain the potential content in each folder in the 'description' field and keep every other fields the same. Make sure every object have their description. Return your answer in JSON format without any further explanation. Provide your answer between '```json' and '```', and it should be in a list.\\n"
         + prompt
         + "\",\"max_tokens\":4000,\"temperature\":0.75,\"p\":0.35,\"k\":128,\"stop_sequences\":[],\"return_likelihoods\":\"NONE\"}",
     }
@@ -23,6 +23,7 @@ def fetchInferenceResult(input):
     response = bedrock_runtime.invoke_model(**kwargs)
     response_body = json.loads(response['body'].read())
     data = response_body['generations'][0]['text']
+    # print(data)
 
     json_data = re.search(r'```json(.*?)```', data, re.DOTALL)
 
