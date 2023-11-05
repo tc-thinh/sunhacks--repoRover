@@ -41,7 +41,8 @@ app.post("/api/get_data", async (req, res) => {
                 link: url,
             }
         );
-        res.send(response.data);
+        console.log(response.data.processed_data);
+        res.redirect("/");
     } else {
         res.redirect("/?error=Invalid URL");
     }
