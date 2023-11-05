@@ -2,6 +2,7 @@
 
 ## Inspiration
 RapidRepoRover sprang from a heartfelt ambition to untangle the intricate web of GitHub for fellow developers. We've all been there, haven't we? Staring at a screen, trying to make sense of a new repository, feeling like we're decoding an ancient script. That shared frustration knit our team together, fueling a drive to build something more than a tool—a companion for the coding journey. We envisioned a beacon to illuminate the path through GitHub's dense forest of files and commits. So, with a dash of AI magic and a sprinkle of cloud prowess, we crafted RapidRepoRover: a friendly guide to help you navigate the GitHub maze with ease and a touch of joy.
+![Two Deadlines Runner :(](https://github.com/trancongthinh6304/sunhacks--repoRover/blob/7b31c09674bf4768a164285878d51970f6e4accf/image1.jpg)
 
 ## What it does
 - Introducing ***RapidRepoRover: Repository Roadmap***, a novel innovation in the realm of GitHub navigation. Our platform, a fusion of cutting-edge AI and robust **AWS technology**, is a breakthrough in understanding complex **GitHub** repository structures.
@@ -35,6 +36,8 @@ We faced the challenge of navigating GitHub's complex folders while keeping the 
 *Run simultaneously*
 - `npm start`
 - `python ./backend/run.py`
+
+![Our Project in Production](https://github.com/trancongthinh6304/sunhacks--repoRover/blob/7b31c09674bf4768a164285878d51970f6e4accf/image2.png)
 
 ## What we learned
 * As we kicked off the RapidRepoRover program, our team traversed the territory of machine learning, AWS, and JavaScript. It was a practical education: a crash course on a real-world basis. We are well trained in managing clouds, handling algorithms, and scripting solutions for dynamic responses.
