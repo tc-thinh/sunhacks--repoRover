@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from helpers import get_git_JSON
+from helpers import get_git_JSON, fetchPrompt
 
 app = FastAPI()
 
@@ -17,5 +17,6 @@ async def root():
 @app.post("/process_data")
 async def process_data(link_data: LinkData):
     JSON_data = get_git_JSON.getJSON(link_data.link)
-    print(f"Processed data from link: {link_data.link}")
-    return {"processed_data": JSON_data}
+    # result = JSON_data
+    result = fetchPrompt.fetchInferenceResult(JSON_data)
+    return {"data": result}
