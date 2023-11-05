@@ -39,11 +39,46 @@ app.post("/api/check-github-url", async (req, res) => {
 
     if (url) {
         res.cookie("url", url); // Set a cookie with the username
-        res.redirect("/"); // Redirect to the tasks route upon successful login
+        res.redirect("/get_data"); // Redirect to the tasks route upon successful login
     } else {
         res.redirect("/?error=Invalid url")
     }
 });
+
+
+
+app.get("/get_data", (req, res) => {
+    // Dummy data
+    const Data = [
+        {"name": "SmileScore", "description": "Module to quantify smile."},
+        {"name": "animations", "description": "Module to create video animation."},
+        {"name": "face_reg", "description": "Module for face detection and video reading."},
+        {"name": "flaskapp", "description": "Module containing Flask app for the Beauty Moment Synthesis API."},
+        {"name": "misc", "description": "Module with various utility scripts for data extraction and visualization."},
+        {"name": "model", "description": "Module holding the main model script."},
+        {"name": "README.md", "description": "Readme file explaining the project and its structure."},
+        {"name": "config.py", "description": "Configuration file."},
+        {"name": "SDD-FIQA.py", "description": "Script for face image quality assessment."},
+        {"name": "main.py", "description": "Main script for the project."},
+        {"name": "requirements.txt", "description": "File containing required dependencies for the project."},
+        {"name": "results", "description": "Folder for storing project results."},
+        {"name": "test", "description": "Folder for project testing."}
+    ]
+    
+
+    // Transform the films JSON data to the format needed for the view
+    let List = Data.map((data) => ({
+        name: data.name,
+        description: data.description
+    }));
+
+    // Render the "films" view, passing the actor and films list to the template
+    res.render("action", {
+        data: List
+    });
+});
+
+
 
 
 // Start the server on the specified port

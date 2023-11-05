@@ -37,7 +37,6 @@ async function isGitHubUrl(url) {
         throw error; // Throw the error to be handled by the caller
     }
 }
-
 // Export the functions for use in other modules
 module.exports = {
     isGitHubUrl,
