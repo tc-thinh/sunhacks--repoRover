@@ -24,6 +24,7 @@ async def process_data(link_data: LinkData):
 
 @app.post("/process_sub_data")
 async def process_sub_data(link_data: LinkData):
+    print(link_data.link)
     JSON_data, repo_name = getGitJSON.getJSONSubRepo(link_data.link)
     # result = JSON_data
     result = fetchPrompt.fetchInferenceResult(JSON_data)
