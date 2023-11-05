@@ -4,22 +4,61 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RapidRepoRover: Repository Roadmap</title>
+        <link rel="stylesheet" href="/static/homepage.css">
+        <title>Home</title>
     </head>
 
     <body>
-        <h1>RapidRepoRover: Repository Roadmap</h1>
-        <form action="/api/get_data" method="post">
-            <label>URL:</label>
-            <input type="text" name="url" placeholder="URL" />
-            <input type="submit" />
-            {{#if error}}
-            <div class="alert alert-danger" role="alert" style="color:red">
-                {{error}}
+        <div class="header">
+            <!--Content before waves-->
+            <div class="inner-header flex">
+                <h1>RapidRepoRover: Repository Roadmap</h1>
             </div>
-            {{/if}}
-        </form>
 
+            <div class="home__search_box">
+                <form action="/api/get_data" method="post" class="form-wrapper cf" id="search-form">
+                    <input type="text" placeholder="Search here..." name="url">
+                    <button type="submit">Search</button>
+                    <div>
+                        {{#if error}}
+                        <div id="errorAlert" style="display: none; color: red;" class="alert alert-danger" role="alert">
+                            Invalid Github URL. Please try again.
+                        </div>
+                        {{/if}}
+                    </div>
+                </form>
+                <div>
+                    <h3>Give us a link and we will tell you what's inside</h3>
+                </div>
+            </div>
+
+
+            <!--Waves Container-->
+            <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                    <defs>
+                        <path id="gentle-wave"
+                            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                    </defs>
+                    <g class="parallax">
+                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                    </g>
+                </svg>
+            </div>
+            <!--Waves end-->
+
+        </div>
+        <div class="loader" id="loader">
+            <div class="tile"></div>
+        </div>
+
+        <script src="/static/homeScript.js">
+
+        </script>
     </body>
 
 </html>

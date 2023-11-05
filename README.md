@@ -1,19 +1,22 @@
+# sunhacks--repoRover
+
+=======
 # sunhacks--RapidRepoRover: Repository Roadmap
 
 ## Inspiration
 RapidRepoRover sprang from a heartfelt ambition to untangle the intricate web of GitHub for fellow developers. We've all been there, haven't we? Staring at a screen, trying to make sense of a new repository, feeling like we're decoding an ancient script. That shared frustration knit our team together, fueling a drive to build something more than a tool—a companion for the coding journey. We envisioned a beacon to illuminate the path through GitHub's dense forest of files and commits. So, with a dash of AI magic and a sprinkle of cloud prowess, we crafted RapidRepoRover: a friendly guide to help you navigate the GitHub maze with ease and a touch of joy.
 
 ## What it does
-- Introducing _**RapidRepoRover: Repository Roadmap**_, a novel innovation in the realm of GitHub navigation. Our platform, a fusion of cutting-edge AI and robust **AWS technology**, is a breakthrough in understanding complex **GitHub** repository structures.
-- _**RapidRepoRover**_ is not just an application, it’s an innovation that allows you to effortlessly explore and comprehend intricate repositories. It’s not just a tool, it’s an innovation that unravels the complexities of GitHub repositories. Our intelligent system innovatively dissects the repository’s roadmap and presents it in an intuitive, user-friendly format.
+- Introducing ***RapidRepoRover: Repository Roadmap***, a novel innovation in the realm of GitHub navigation. Our platform, a fusion of cutting-edge AI and robust **AWS technology**, is a breakthrough in understanding complex **GitHub** repository structures.
+- ***RapidRepoRover*** is not just an application, it’s an innovation that allows you to effortlessly explore and comprehend intricate repositories. It’s not just a tool, it’s an innovation that unravels the complexities of GitHub repositories. Our intelligent system innovatively dissects the repository’s roadmap and presents it in an intuitive, user-friendly format.
 
 ## How we built it
-The backend solution for _**RapidRepoRover: Repository Roadmap**_  is built using:
+The backend solution for ***RapidRepoRover: Repository Roadmap***  is built with:
 * Express
 * FastAPI
 * Powered by AWS Deep Learning
 
-The front-end solution for  _**RapidRepoRover: Repository Roadmap**_ is built using:
+The front-end solution for  ***RapidRepoRover: Repository Roadmap**8 is built with:
 * Javascript
 * Handlebars
 * HTML/CSS

@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
 
     <body>
@@ -22,17 +23,23 @@
                 </div>
             </header>
         </main>
-
-        <div class="action__list-display">
+        <div class="action__list__display">
             <ol class="action__list" style="--length: {{data.length}}" role="list">
                 {{#each data}}
                 <li style="--i: {{@index}}" class="action__list-item" item-type="{{this.type}}" item-url="{{this.url}}">
-                    <h4>{{this.name}}</h4>
-                    <p>{{this.description}}</p>
+                    {{#if (eq this.type 'file')}}
+                    <h4>{{name}}</h4><i class="fas fa-file custom-icon"></i> <!-- Icon for file -->
+                    <p>{{description}}</p>
+                    {{else}}
+                    <h4>{{name}}</h4><i class="fas fa-folder custom-icon"></i> <!-- Icon for folder -->
+                    <p>{{description}}</p>
+                    {{/if}}
+                    <a href="{{url}}" target="_blank">{{name}}</a>
                 </li>
                 {{/each}}
             </ol>
         </div>
+        <script src="/static/actionScript.js"></script>
     </body>
 
 </html>

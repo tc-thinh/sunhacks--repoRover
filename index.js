@@ -3,6 +3,7 @@ const { engine } = require("express-handlebars");
 const cookierParser = require("cookie-parser");
 const axios = require("axios");
 const { isGitHubUrl } = require("./frontend/helpers/checkGithubLink");
+const Handlebars = require("handlebars");
 
 const app = express();
 const port = 3000;
@@ -15,6 +16,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookierParser());
 app.use(express.json());
 
+Handlebars.registerHelper("eq", function (v1, v2) {
+    return v1 === v2;
+});
+
 cookieHistory = [];
 
 app.get("/", (req, res) => {
@@ -23,6 +28,15 @@ app.get("/", (req, res) => {
 });
 
 app.get("/view_data", async (req, res) => {
+    const itemsList = req.cookies.itemsList;
+    // console.log(itemsList);
+    res.render("action", {
+        data: itemsList,
+        repo_name: req.cookies.repo_name,
+    });
+});
+
+app.get("/view_sub_data", async (req, res) => {
     const itemsList = req.cookies.itemsList;
     // console.log(itemsList);
     res.render("action", {
@@ -52,7 +66,7 @@ app.post("/api/get_data", async (req, res) => {
             type: data.type,
             url: data.url,
         }));
-        // console.log(itemsList);
+        console.log(itemsList);
         res.cookie("itemsList", itemsList);
         res.cookie("repo_name", repo_name);
         res.redirect("/view_data");
@@ -82,7 +96,11 @@ app.post("/api/get_sub_data", async (req, res) => {
     // console.log(itemsList);
     res.cookie("itemsList", itemsList);
     res.cookie("repo_name", repo_name);
-    res.redirect("/view_data");
+    res.redirect("/view_sub_data");
+});
+
+app.get("/loading", (req, res) => {
+    res.render("loading", {});
 });
 
 app.listen(port, () => {

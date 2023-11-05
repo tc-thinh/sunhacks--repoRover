@@ -5,7 +5,7 @@
     list-style-type: none!important;
 }
 
-.action__list-display{
+.action__list__display{
     margin: 0;
     height: auto;
     display: flex;
@@ -28,8 +28,9 @@ body {
 	background-color: whitesmoke;
 }
 
+
 p {
-	margin: 0;
+	margin: 10;
 	line-height: 1.6;
 }
 
@@ -71,9 +72,10 @@ li::before {
 
 h4 {
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	margin: 0 0 1rem;
 	color: rgb(70 70 70);
+  justify-content: center;
 }
 
 h4::before {
@@ -91,6 +93,13 @@ h4::before {
 	color: white;
 }
 
+.custom-icon {
+  font-size: 40px;  
+  color:#fff;
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
+
 @media (min-width: 40em) {
 	li {
 		margin: 3rem auto;
@@ -99,7 +108,7 @@ h4::before {
 	
 	h4 {
 		font-size: 2.25rem;
-		margin: 0 0 2rem;
+		margin: 0 0 1rem;
 	}
 	
 	h4::before {
@@ -112,8 +121,6 @@ h4::before {
 * {
   box-sizing: border-box;
 }
-
-
 
 main {
   padding-top: 300px;
