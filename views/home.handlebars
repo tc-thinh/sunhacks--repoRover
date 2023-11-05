@@ -14,8 +14,9 @@
 
             <!--Content before waves-->
             <div class="inner-header flex">
-                <b><h1>RapidRepoRover: Repository Roadmap</h1></b>
+                <h1>RapidRepoRover: Repository Roadmap</h1>
             </div>
+            
         <div class="home__search_box">
             <form action="/api/check-github-url" class="form-wrapper cf" method="post">
             <input type="text" placeholder="Search here..." name="url">
@@ -23,11 +24,14 @@
             <div>
                 {{#if error}}
                 <div id="errorAlert" style="display: none; color: red;" class="alert alert-danger" role="alert">
-                    Invalid URL. Please try again.
+                    Invalid Github URL. Please try again.
                 </div>
                 {{/if}}
             </div>
             </form>
+            <div>
+            <h3>Give us a link and we will tell you what's inside</h3>
+            </div>
         </div>
            
 
@@ -48,9 +52,10 @@
             </div>
             <!--Waves end-->
             
-
         </div>
             <!--Header ends-->
+
+       
       
        <script>
         document.addEventListener('DOMContentLoaded', ()=>{
