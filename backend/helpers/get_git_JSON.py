@@ -7,9 +7,17 @@ def getJSON(url: str) -> dict:
     # get the API url
     api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents"
     # get the JSON data
-    response = requests.get(api_url)
+    raw_data = requests.get(api_url)
+    data = cleanGitJSON(raw_data.json())
     # print(response.json())
-    return response.json()
+    return data
+
+
+def cleanGitJSON(raw_data):
+    cleaned_data = []
+    for item in raw_data:
+        cleaned_data.append({"name": item["name"]})
+    return cleaned_data
 
 # Testing
 # def main():

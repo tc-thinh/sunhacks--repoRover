@@ -41,8 +41,14 @@ app.post("/api/get_data", async (req, res) => {
                 link: url,
             }
         );
-        console.log(response.data.processed_data);
-        res.redirect("/");
+        const data = response.data.data.data;
+        let itemsList = data.map((data) => ({
+            name: data.name,
+            description: data.description,
+        }));
+        res.render("action", {
+            data: itemsList,
+        });
     } else {
         res.redirect("/?error=Invalid URL");
     }
