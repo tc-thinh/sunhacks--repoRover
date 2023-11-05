@@ -1,6 +1,3 @@
-# sunhacks--repoRover
-
-=======
 # sunhacks--RapidRepoRover: Repository Roadmap
 
 ## Inspiration
@@ -28,6 +25,15 @@ We faced the challenge of navigating GitHub's complex folders while keeping the 
 * AI-Driven Analysis: At its core, RapidRepoRover uses sophisticated machine learning models to parse and understand the structure and contents of GitHub repositories. This analysis allows it to extract and present the most pertinent information, making sense of the myriad files and commits that can often overwhelm developers.
 * Navigational Clarity: Gone are the days of aimlessly clicking through folders and files to understand a project's architecture. RapidRepoRover neatly maps out the repository, offering a clear and concise roadmap of its structure. This streamlined view is invaluable for new contributors looking to understand the project quickly or for seasoned developers trying to pinpoint specific components.
 * User-Friendly Interface: The platform isn't just about powerful technology; it's also about providing a seamless user experience. RapidRepoRover boasts a frontend that is intuitive and easy to navigate, ensuring that users of all technical backgrounds can benefit from the service.
+
+## How to run
+- `git clone https://github.com/trancongthinh6304/sunhacks--repoRover`
+- `cd ./path/to/sunhacks-repoRover`
+- `pip install requirements.txt`
+- `npm i`
+*Run simultaneously*
+- `npm start`
+- `python ./backend/run.py`
 
 ## What we learned
 * As we kicked off the RapidRepoRover program, our team traversed the territory of machine learning, AWS, and JavaScript. It was a practical education: a crash course on a real-world basis. We are well trained in managing clouds, handling algorithms, and scripting solutions for dynamic responses.
