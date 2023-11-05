@@ -4,22 +4,77 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/homepage.css">
         <title>Home</title>
     </head>
 
     <body>
-        <h1>Home</h1>
-        <form action="/api/check-github-url" method="post">
-            <label>URL:</label>
-            <input type="text" name="url" placeholder="URL" />
-            <input type="submit" />
-            {{#if error}}
-            <div class="alert alert-danger" role="alert" style="color:red">
-                {{error}}
+
+        <div class="header">
+
+            <!--Content before waves-->
+            <div class="inner-header flex">
+                <b><h1>RapidRepoRover: Repository Roadmap</h1></b>
             </div>
-            {{/if}}
-        </form>
+        <div class="home__search_box">
+            <form action="/api/check-github-url" class="form-wrapper cf" method="post">
+            <input type="text" placeholder="Search here..." name="url">
+            <button type="submit">Search</button>
+            <div>
+                {{#if error}}
+                <div id="errorAlert" style="display: none; color: red;" class="alert alert-danger" role="alert">
+                    Invalid URL. Please try again.
+                </div>
+                {{/if}}
+            </div>
+            </form>
+        </div>
+           
 
+            <!--Waves Container-->
+            <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+            </svg>
+            </div>
+            <!--Waves end-->
+            
+
+        </div>
+            <!--Header ends-->
+      
+       <script>
+        document.addEventListener('DOMContentLoaded', ()=>{
+            // Check if the URL has the 'error' query parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const showError = urlParams.get('error');
+
+            if (showError) {
+            // If 'error' is present, show the error alert
+            const errorAlert = document.getElementById('errorAlert');
+            errorAlert.style.display = 'block';
+
+            // Hide the error alert after 5000 milliseconds (5 seconds)
+            setTimeout(()=>{
+                errorAlert.style.display = 'none';
+                // Optionally, clear the query parameter from the URL
+                window.history.replaceState(null, null, window.location.pathname);
+            }, 2000);
+            }
+        });
+        </script>
+
+      
+
+      
     </body>
-
 </html>

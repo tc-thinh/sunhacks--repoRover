@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading...</title>
+    <!-- Remove one of the CSS links if they are the same, or ensure they are both needed and pointing to the correct paths -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="loader">
+        <!-- Assuming you want three tiles based on your CSS -->
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+    </div>
+
+    <!-- Your form. Make sure to include necessary form fields inside the <form> tag -->
+    <form action="/api/loading" method="post"></form>
+    
+    <script>
+        // If you want to redirect after a certain period, adjust as necessary
+        setTimeout(function() {
+            window.location.href = '/get_data'; // Replace with your desired URL
+        }, 2000);
+    </script>
+</body>
+</html>

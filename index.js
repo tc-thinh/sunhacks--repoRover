@@ -15,6 +15,14 @@ const path = require("path"); // Import path module for working with file and di
 const app = express(); // Initialize the Express application
 const port = 3000; // Set the server port to 3000
 
+const Handlebars = require('handlebars');
+
+Handlebars.registerHelper('eq', function (v1, v2) {
+  return v1 === v2;
+});
+
+
+
 // Configure the Express app
 app.engine("handlebars", engine()); // Set the view engine to handlebars
 app.set("view engine", "handlebars"); // Set handlebars as the view engine
@@ -39,7 +47,7 @@ app.post("/api/check-github-url", async (req, res) => {
 
     if (url) {
         res.cookie("url", url); // Set a cookie with the username
-        res.redirect("/get_data"); // Redirect to the tasks route upon successful login
+        res.redirect("/loading"); // Redirect to the tasks route upon successful login
     } else {
         res.redirect("/?error=Invalid url")
     }
@@ -48,37 +56,30 @@ app.post("/api/check-github-url", async (req, res) => {
 
 
 app.get("/get_data", (req, res) => {
-    // Dummy data
-    const Data = [
-        {"name": "SmileScore", "description": "Module to quantify smile."},
-        {"name": "animations", "description": "Module to create video animation."},
-        {"name": "face_reg", "description": "Module for face detection and video reading."},
-        {"name": "flaskapp", "description": "Module containing Flask app for the Beauty Moment Synthesis API."},
-        {"name": "misc", "description": "Module with various utility scripts for data extraction and visualization."},
-        {"name": "model", "description": "Module holding the main model script."},
-        {"name": "README.md", "description": "Readme file explaining the project and its structure."},
-        {"name": "config.py", "description": "Configuration file."},
-        {"name": "SDD-FIQA.py", "description": "Script for face image quality assessment."},
-        {"name": "main.py", "description": "Main script for the project."},
-        {"name": "requirements.txt", "description": "File containing required dependencies for the project."},
-        {"name": "results", "description": "Folder for storing project results."},
-        {"name": "test", "description": "Folder for project testing."}
-    ]
     
+    const Data = [{'name': 'file1.txt', 'path': '/root/folder1/file1.txt', 'type': 'file', 'url': 'https://github.com/repository/file1.txt','description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
+    {'name': 'folder2', 'path': '/root/folder2', 'type': 'folder', 'url': 'https://github.com/repository/folder2', 'description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '},
+    {'name': 'file2.py', 'path': '/root/folder2/file2.py', 'type': 'file', 'url': 'https://github.com/repository/file2.py','description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '}, 
+    {'name': 'file2.py', 'path': '/root/folder2/file2.py', 'type': 'file', 'url': 'https://github.com/repository/file2.py','description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '},
+    {'name': 'file2.py', 'path': '/root/folder2/file2.py', 'type': 'file', 'url': 'https://github.com/repository/file2.py','description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '},
+    {'name': 'file2.py', 'path': '/root/folder2/file2.py', 'type': 'file', 'url': 'https://github.com/repository/file2.py','description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '},
+    {'name': 'file2.py', 'path': '/root/folder2/file2.py', 'type': 'file', 'url': 'https://github.com/repository/file2.py','description':' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '}]
 
-    // Transform the films JSON data to the format needed for the view
-    let List = Data.map((data) => ({
-        name: data.name,
-        description: data.description
-    }));
+    Data.forEach(item => {
+        item.isFileType = item.type === 'file';
+    });
 
-    // Render the "films" view, passing the actor and films list to the template
+    // Render the data, passing the attribute into to the template
     res.render("action", {
-        data: List
+        data: Data
     });
 });
 
-
+app.get('/loading', (req, res) => {
+    res.render('loading', {
+        // You can pass variables to the loading template if needed
+    });
+});
 
 
 // Start the server on the specified port
